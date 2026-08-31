@@ -1,0 +1,2 @@
+# KoMa Studio app-ads.txt
+# Authorized advertising system records are listed below.
