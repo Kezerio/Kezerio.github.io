@@ -1,2 +1,5 @@
 # KoMa Studio app-ads.txt
-# Authorized advertising system records are listed below.
+# App: Бесплатные Шашки для двоих без интернета и AI
+# Android package: com.koma.russiancheckers
+# BIGO Ads authorized seller record will replace this placeholder after BIGO provides the publisher ID.
+placeholder.example.com, placeholder, DIRECT, placeholder
