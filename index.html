@@ -326,7 +326,7 @@
   <header class="site-header">
     <div class="shell nav">
       <a class="brand" href="#top" aria-label="КоМа Студия — на главную"><span class="brand-mark" aria-hidden="true">КМ</span><span>КоМа Студия</span></a>
-      <nav class="nav-links" aria-label="Основная навигация"><a href="#games">Наши игры</a><a href="#contact">Обратная связь</a></nav>
+      <nav class="nav-links" aria-label="Основная навигация"><a href="#games">Наши игры</a><a class="js-open-feedback" href="#feedback-modal">Обратная связь</a></nav>
     </div>
   </header>
 
@@ -453,7 +453,10 @@
         if (lastFocused) lastFocused.focus();
       };
 
-      document.querySelectorAll('.js-open-feedback').forEach((button) => button.addEventListener('click', openModal));
+      document.querySelectorAll('.js-open-feedback').forEach((button) => button.addEventListener('click', (event) => {
+        event.preventDefault();
+        openModal();
+      }));
       modal.querySelectorAll('[data-close-feedback]').forEach((button) => button.addEventListener('click', closeModal));
       messageField.addEventListener('input', updateCount);
 
