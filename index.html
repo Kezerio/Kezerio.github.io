@@ -3,19 +3,307 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KoMa Studio</title>
+  <meta name="theme-color" content="#17132a">
+  <meta name="description" content="КоМа Студия — мобильные игры для Android. Играйте в русские шашки и яркий кликер, скачивайте игры в RuStore.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="КоМа Студия — мобильные игры">
+  <meta property="og:description" content="Наши игры для Android: русские шашки и яркий кликер. Скачать бесплатно в RuStore.">
+  <meta property="og:image" content="https://kezerio.github.io/og.png">
+  <meta property="og:url" content="https://kezerio.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="КоМа Студия — мобильные игры">
+  <meta name="twitter:description" content="Наши игры для Android: русские шашки и яркий кликер. Скачать бесплатно в RuStore.">
+  <meta name="twitter:image" content="https://kezerio.github.io/og.png">
+  <title>КоМа Студия — мобильные игры</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8f4ff;
+      --muted: #bcb6cf;
+      --page: #100d1d;
+      --surface: #1b1730;
+      --line: rgba(255, 255, 255, 0.11);
+      --accent-strong: #ff6948;
+      --violet: #a785ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(167, 133, 255, 0.18), transparent 30rem),
+        radial-gradient(circle at 92% 20%, rgba(255, 105, 72, 0.15), transparent 28rem),
+        var(--page);
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 13, 29, 0.82);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      color: #21152b;
+      background: linear-gradient(135deg, #ffc16a, var(--accent-strong));
+      box-shadow: 0 10px 26px rgba(255, 105, 72, 0.28);
+      font-size: 15px;
+      font-weight: 950;
+    }
+    .nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: 14px; font-weight: 700; }
+    .nav-links a { text-decoration: none; transition: color 160ms ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+    .hero {
+      padding: 104px 0 76px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      align-items: center;
+      gap: 64px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: #d9ccff;
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 2px; border-radius: 999px; background: var(--violet); }
+    h1 { max-width: 780px; margin: 0; font-size: clamp(48px, 7vw, 86px); line-height: 0.98; letter-spacing: -0.06em; }
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(100deg, #fff 0%, #d7c9ff 40%, #ff9a68 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .hero-copy { max-width: 680px; margin: 28px 0 0; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 850;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      color: #241428;
+      background: linear-gradient(135deg, #ffc369, var(--accent-strong));
+      box-shadow: 0 14px 36px rgba(255, 105, 72, 0.24);
+    }
+    .button-secondary { border-color: var(--line); background: rgba(255, 255, 255, 0.04); }
+    .hero-panel {
+      position: relative;
+      min-height: 410px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      background: linear-gradient(145deg, rgba(167, 133, 255, 0.14), rgba(255, 105, 72, 0.08)), var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, #000, transparent);
+    }
+    .floating-icon {
+      position: absolute;
+      width: 148px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border: 5px solid rgba(255, 255, 255, 0.11);
+      border-radius: 34px;
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.38);
+      background: #292341;
+    }
+    .floating-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .floating-icon:first-of-type { top: 54px; left: 44px; transform: rotate(-7deg); }
+    .floating-icon:last-of-type { right: 42px; bottom: 54px; transform: rotate(8deg); }
+    .panel-label { position: absolute; left: 38px; bottom: 32px; max-width: 190px; margin: 0; color: var(--muted); font-size: 13px; font-weight: 750; line-height: 1.45; }
+    .games { padding: 68px 0 110px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+    .section-heading h2 { margin: 0; font-size: clamp(34px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.045em; }
+    .section-heading p { max-width: 460px; margin: 0; color: var(--muted); line-height: 1.55; }
+    .game-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .game-card {
+      min-height: 390px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 58%), var(--surface);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+    .game-card:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.2); }
+    .game-top { display: flex; align-items: flex-start; gap: 20px; }
+    .game-icon { width: 104px; aspect-ratio: 1; flex: 0 0 auto; border: 3px solid rgba(255, 255, 255, 0.12); border-radius: 25px; object-fit: cover; box-shadow: 0 16px 28px rgba(0, 0, 0, 0.27); }
+    .tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border: 1px solid rgba(167, 133, 255, 0.24); border-radius: 999px; color: #d8ccff; background: rgba(167, 133, 255, 0.09); font-size: 12px; font-weight: 850; }
+    .game-card h3 { margin: 12px 0 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.08; letter-spacing: -0.035em; }
+    .game-description { margin: 28px 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
+    .game-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; }
+    .game-meta span { padding: 8px 11px; border-radius: 10px; color: #d5cee2; background: rgba(255, 255, 255, 0.055); font-size: 12px; font-weight: 750; }
+    .card-link { display: inline-flex; align-items: center; gap: 10px; color: #ffb27e; font-weight: 850; text-decoration: none; }
+    .card-link::after { content: "→"; font-size: 20px; transition: transform 160ms ease; }
+    .card-link:hover::after { transform: translateX(4px); }
+    .contact { padding: 0 0 104px; }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: clamp(30px, 5vw, 56px);
+      border: 1px solid rgba(255, 159, 97, 0.25);
+      border-radius: 32px;
+      background: linear-gradient(120deg, rgba(255, 105, 72, 0.15), rgba(167, 133, 255, 0.13)), var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .contact-card h2 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.04em; }
+    .contact-card p { max-width: 610px; margin: 0; color: var(--muted); line-height: 1.55; }
+    footer { padding: 28px 0 36px; border-top: 1px solid var(--line); color: #918aa2; font-size: 13px; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { text-underline-offset: 4px; }
+    :focus-visible { outline: 3px solid rgba(255, 176, 112, 0.8); outline-offset: 4px; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding-top: 72px; }
+      .hero-panel { min-height: 360px; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .game-grid { grid-template-columns: 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 28px, 1120px); }
+      .nav { min-height: 66px; }
+      .nav-links a:first-child { display: none; }
+      .nav-links { gap: 16px; }
+      .hero { gap: 38px; padding: 58px 0 48px; }
+      h1 { font-size: clamp(44px, 15vw, 64px); }
+      .hero-copy { font-size: 17px; }
+      .hero-actions, .hero-actions .button { width: 100%; }
+      .hero-panel { min-height: 300px; border-radius: 26px; }
+      .floating-icon { width: 118px; border-radius: 26px; }
+      .floating-icon:first-of-type { top: 35px; left: 28px; }
+      .floating-icon:last-of-type { right: 26px; bottom: 36px; }
+      .panel-label { left: 26px; bottom: 24px; max-width: 150px; font-size: 11px; }
+      .games { padding: 46px 0 76px; }
+      .game-card { min-height: 0; padding: 22px; border-radius: 24px; }
+      .game-icon { width: 82px; border-radius: 20px; }
+      .game-card h3 { font-size: 25px; }
+      .contact { padding-bottom: 76px; }
+      .contact-card { border-radius: 24px; }
+      .contact-card .button { width: 100%; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>KoMa Studio</h1>
-    <p>Официальный сайт разработчика мобильных игр.</p>
-    <h2>Бесплатные Шашки для двоих без интернета и AI</h2>
-    <p>Android package: <code>com.koma.russiancheckers</code></p>
-    <ul>
-      <li><a href="/app-ads.txt">App-ads.txt</a></li>
-      <li><a href="/russian-checkers-privacy/">Политика конфиденциальности</a></li>
-    </ul>
-    <p>Контакт: <a href="mailto:kezkezerio@gmail.com">kezkezerio@gmail.com</a></p>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="КоМа Студия — на главную"><span class="brand-mark" aria-hidden="true">КМ</span><span>КоМа Студия</span></a>
+      <nav class="nav-links" aria-label="Основная навигация"><a href="#games">Наши игры</a><a href="#contact">Обратная связь</a></nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Мобильные игры для Android</p>
+        <h1 id="hero-title"><span class="gradient-text">Играем.</span><br>Создаём. Радуем.</h1>
+        <p class="hero-copy">КоМа Студия создаёт понятные и увлекательные игры, в которые легко начать играть и приятно возвращаться.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#games">Смотреть игры</a>
+          <a class="button button-secondary" href="mailto:kezkezerio@gmail.com?subject=%D0%9E%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D1%8C%20%E2%80%94%20%D0%9A%D0%BE%D0%9C%D0%B0%20%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F">Написать нам</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Игры КоМа Студии">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="floating-icon"><img src="https://static.rustore.ru/imgproxy/S_-r8M7lbxUd-ukBQhzLB4ZWll-Zy1n79whHn_9-prg/preset:vk_og_img/plain/https://static.rustore.ru/2026/8/10/66/apk/2063745241/content/ICON/3715ad90-2285-4666-ab97-f5ab9533d7c9.png@webp" alt="Иконка игры Русские шашки"></div>
+        <div class="floating-icon"><img src="https://static.rustore.ru/imgproxy/599ypp7QAMEqnysWEGfSeEv78ctYdh4lO70l325EHQc/preset:vk_og_img/plain/https://static.rustore.ru/2026/3/27/b9/apk/2063703643/content/ICON/18bff51e-37ce-4ab2-9416-0dfbde1bba7f.png@webp" alt="Иконка игры Мелстрой Кликер"></div>
+        <p class="panel-label">Две игры уже доступны бесплатно в RuStore</p>
+      </div>
+    </section>
+
+    <section class="shell games" id="games" aria-labelledby="games-title">
+      <div class="section-heading"><h2 id="games-title">Наши игры</h2><p>Выбирайте спокойную стратегию или яркий кликер — обе игры доступны для Android в RuStore.</p></div>
+      <div class="game-grid">
+        <article class="game-card">
+          <div class="game-top">
+            <img class="game-icon" src="https://static.rustore.ru/imgproxy/S_-r8M7lbxUd-ukBQhzLB4ZWll-Zy1n79whHn_9-prg/preset:vk_og_img/plain/https://static.rustore.ru/2026/8/10/66/apk/2063745241/content/ICON/3715ad90-2285-4666-ab97-f5ab9533d7c9.png@webp" alt="Иконка Русских шашек">
+            <div><span class="tag">Стратегия · 0+</span><h3>Русские шашки</h3></div>
+          </div>
+          <p class="game-description">Классические русские шашки для партии с другом или игры против компьютера. Простые правила, удобное управление и тактические решения.</p>
+          <div class="game-meta" aria-label="Особенности игры"><span>Для двоих</span><span>Игра с ИИ</span><span>Классические правила</span></div>
+          <a class="card-link" href="https://www.rustore.ru/catalog/app/com.koma.russiancheckers" target="_blank" rel="noopener noreferrer">Открыть в RuStore</a>
+        </article>
+
+        <article class="game-card">
+          <div class="game-top">
+            <img class="game-icon" src="https://static.rustore.ru/imgproxy/599ypp7QAMEqnysWEGfSeEv78ctYdh4lO70l325EHQc/preset:vk_og_img/plain/https://static.rustore.ru/2026/3/27/b9/apk/2063703643/content/ICON/18bff51e-37ce-4ab2-9416-0dfbde1bba7f.png@webp" alt="Иконка Мелстрой Кликера">
+            <div><span class="tag">Казуальная · 18+</span><h3>Мелстрой Кликер</h3></div>
+          </div>
+          <p class="game-description">Динамичный кликер с уровнями, наградами, коллекциями и постоянным прогрессом. Каждый тап помогает двигаться дальше и открывать новое.</p>
+          <div class="game-meta" aria-label="Особенности игры"><span>Уровни</span><span>Награды</span><span>Коллекции</span></div>
+          <a class="card-link" href="https://www.rustore.ru/catalog/app/com.mellstroy.clicker" target="_blank" rel="noopener noreferrer">Открыть в RuStore</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card">
+        <div><h2 id="contact-title">Есть вопрос или идея?</h2><p>Напишите нам о проблеме, предложите улучшение или поделитесь впечатлениями. Мы читаем сообщения игроков и используем их, чтобы делать игры лучше.</p></div>
+        <a class="button button-primary" href="mailto:kezkezerio@gmail.com?subject=%D0%9E%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D1%8C%20%E2%80%94%20%D0%9A%D0%BE%D0%9C%D0%B0%20%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F">Обратная связь</a>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="shell footer-row"><span>© 2026 КоМа Студия. Мобильные игры для Android.</span><div class="footer-links"><a href="/russian-checkers-privacy/">Политика конфиденциальности</a><a href="/app-ads.txt">app-ads.txt</a></div></div>
+  </footer>
 </body>
 </html>
