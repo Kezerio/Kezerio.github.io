@@ -120,6 +120,8 @@
       border-radius: 16px;
       font-size: 15px;
       font-weight: 850;
+      font-family: inherit;
+      cursor: pointer;
       text-decoration: none;
       transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
     }
@@ -204,6 +206,79 @@
     .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
     .footer-links a { text-underline-offset: 4px; }
+    body.modal-open { overflow: hidden; }
+    .feedback-modal[hidden] { display: none; }
+    .feedback-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+    .feedback-modal.is-open { opacity: 1; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(7, 5, 14, 0.78); backdrop-filter: blur(8px); }
+    .modal-dialog {
+      position: relative;
+      width: min(620px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(167, 133, 255, 0.12), rgba(255, 105, 72, 0.08)), #19152c;
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.56);
+      transform: translateY(14px) scale(0.98);
+      transition: transform 180ms ease;
+    }
+    .feedback-modal.is-open .modal-dialog { transform: translateY(0) scale(1); }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.05);
+      font: inherit;
+      font-size: 25px;
+      cursor: pointer;
+    }
+    .modal-dialog h2 { margin: 0 52px 10px 0; font-size: clamp(29px, 5vw, 40px); letter-spacing: -0.04em; }
+    .modal-intro { margin: 0 0 28px; color: var(--muted); line-height: 1.55; }
+    .feedback-form { display: grid; gap: 18px; }
+    .form-field { display: grid; gap: 8px; }
+    .form-field label { font-size: 14px; font-weight: 800; }
+    .form-field input, .form-field textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 15px;
+      color: var(--ink);
+      background: rgba(8, 6, 17, 0.48);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+    .form-field input { min-height: 52px; padding: 0 16px; }
+    .form-field textarea { min-height: 156px; padding: 14px 16px; line-height: 1.5; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(167, 133, 255, 0.16); }
+    .field-meta { display: flex; justify-content: flex-end; color: #958da8; font-size: 12px; }
+    .privacy-note { margin: -2px 0 0; color: #a9a1ba; font-size: 12px; line-height: 1.5; }
+    .privacy-note a { text-underline-offset: 3px; }
+    .form-actions { display: flex; align-items: center; gap: 16px; }
+    .form-status { flex: 1; min-height: 22px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .form-status.is-success { color: #aee9bf; }
+    .form-status.is-error { color: #ffb2a2; }
+    .feedback-form .button:disabled { cursor: wait; opacity: 0.65; transform: none; }
+    .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
     :focus-visible { outline: 3px solid rgba(255, 176, 112, 0.8); outline-offset: 4px; }
 
     @media (max-width: 860px) {
@@ -234,6 +309,11 @@
       .contact { padding-bottom: 76px; }
       .contact-card { border-radius: 24px; }
       .contact-card .button { width: 100%; }
+      .feedback-modal { padding: 10px; align-items: end; }
+      .modal-dialog { max-height: calc(100vh - 20px); padding: 26px 20px 22px; border-radius: 24px; }
+      .modal-close { top: 14px; right: 14px; }
+      .form-actions { align-items: stretch; flex-direction: column-reverse; }
+      .feedback-form .button { width: 100%; }
       .footer-row { align-items: flex-start; flex-direction: column; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -258,7 +338,7 @@
         <p class="hero-copy">КоМа Студия создаёт понятные и увлекательные игры, в которые легко начать играть и приятно возвращаться.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#games">Смотреть игры</a>
-          <a class="button button-secondary" href="mailto:kezkezerio@gmail.com?subject=%D0%9E%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D1%8C%20%E2%80%94%20%D0%9A%D0%BE%D0%9C%D0%B0%20%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F">Написать нам</a>
+          <button class="button button-secondary js-open-feedback" type="button">Написать нам</button>
         </div>
       </div>
       <div class="hero-panel" aria-label="Игры КоМа Студии">
@@ -297,7 +377,7 @@
     <section class="shell contact" id="contact" aria-labelledby="contact-title">
       <div class="contact-card">
         <div><h2 id="contact-title">Есть вопрос или идея?</h2><p>Напишите нам о проблеме, предложите улучшение или поделитесь впечатлениями. Мы читаем сообщения игроков и используем их, чтобы делать игры лучше.</p></div>
-        <a class="button button-primary" href="mailto:kezkezerio@gmail.com?subject=%D0%9E%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D0%B0%D1%8F%20%D1%81%D0%B2%D1%8F%D0%B7%D1%8C%20%E2%80%94%20%D0%9A%D0%BE%D0%9C%D0%B0%20%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F">Обратная связь</a>
+        <button class="button button-primary js-open-feedback" type="button">Обратная связь</button>
       </div>
     </section>
   </main>
@@ -305,5 +385,135 @@
   <footer>
     <div class="shell footer-row"><span>© 2026 КоМа Студия. Мобильные игры для Android.</span><div class="footer-links"><a href="/russian-checkers-privacy/">Политика конфиденциальности</a><a href="/app-ads.txt">app-ads.txt</a></div></div>
   </footer>
+
+  <div class="feedback-modal" id="feedback-modal" hidden>
+    <div class="modal-backdrop" data-close-feedback aria-hidden="true"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="feedback-title" aria-describedby="feedback-description">
+      <button class="modal-close" type="button" data-close-feedback aria-label="Закрыть форму">×</button>
+      <h2 id="feedback-title">Обратная связь</h2>
+      <p class="modal-intro" id="feedback-description">Расскажите о проблеме, идее или впечатлениях от наших игр.</p>
+      <form class="feedback-form" id="feedback-form" novalidate>
+        <div class="form-field">
+          <label for="feedback-name">Ваше имя</label>
+          <input id="feedback-name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться" required>
+        </div>
+        <div class="form-field">
+          <label for="feedback-email">Электронная почта</label>
+          <input id="feedback-email" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
+        </div>
+        <div class="form-field">
+          <label for="feedback-message">Сообщение</label>
+          <textarea id="feedback-message" name="message" maxlength="3000" placeholder="Введите текст сообщения" required></textarea>
+          <div class="field-meta"><span id="feedback-count">0 / 3000</span></div>
+        </div>
+        <div class="honeypot" aria-hidden="true"><label for="feedback-company">Компания</label><input id="feedback-company" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+        <p class="privacy-note">Нажимая «Отправить», вы соглашаетесь на передачу указанных данных сервису отправки сообщений для ответа. <a href="/russian-checkers-privacy/" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>.</p>
+        <div class="form-actions">
+          <p class="form-status" id="feedback-status" role="status" aria-live="polite"></p>
+          <button class="button button-primary" id="feedback-submit" type="submit">Отправить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const modal = document.getElementById('feedback-modal');
+      const dialog = modal.querySelector('.modal-dialog');
+      const form = document.getElementById('feedback-form');
+      const nameField = document.getElementById('feedback-name');
+      const messageField = document.getElementById('feedback-message');
+      const honeyField = document.getElementById('feedback-company');
+      const count = document.getElementById('feedback-count');
+      const status = document.getElementById('feedback-status');
+      const submit = document.getElementById('feedback-submit');
+      let lastFocused = null;
+
+      const setStatus = (text, type = '') => {
+        status.textContent = text;
+        status.className = `form-status${type ? ` is-${type}` : ''}`;
+      };
+
+      const updateCount = () => { count.textContent = `${messageField.value.length} / 3000`; };
+
+      const openModal = () => {
+        lastFocused = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add('modal-open');
+        requestAnimationFrame(() => {
+          modal.classList.add('is-open');
+          nameField.focus();
+        });
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        document.body.classList.remove('modal-open');
+        window.setTimeout(() => { modal.hidden = true; }, 180);
+        if (lastFocused) lastFocused.focus();
+      };
+
+      document.querySelectorAll('.js-open-feedback').forEach((button) => button.addEventListener('click', openModal));
+      modal.querySelectorAll('[data-close-feedback]').forEach((button) => button.addEventListener('click', closeModal));
+      messageField.addEventListener('input', updateCount);
+
+      document.addEventListener('keydown', (event) => {
+        if (modal.hidden) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeModal();
+          return;
+        }
+        if (event.key !== 'Tab') return;
+        const focusable = [...dialog.querySelectorAll('button:not([disabled]), input:not([tabindex="-1"]), textarea, a[href]')];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        setStatus('');
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        if (honeyField.value) return;
+
+        submit.disabled = true;
+        submit.textContent = 'Отправляем…';
+        setStatus('Отправляем сообщение…');
+
+        const formData = new FormData(form);
+        const email = String(formData.get('email')).trim();
+        const payload = {
+          name: String(formData.get('name')).trim(),
+          email,
+          message: String(formData.get('message')).trim(),
+          _replyto: email,
+          _subject: 'Обратная связь — КоМа Студия',
+          _template: 'table'
+        };
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/aniyurotaxo084@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error('Request failed');
+          form.reset();
+          updateCount();
+          setStatus('Сообщение отправлено. Спасибо!', 'success');
+        } catch (error) {
+          setStatus('Не удалось отправить. Проверьте интернет и попробуйте ещё раз.', 'error');
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Отправить';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
