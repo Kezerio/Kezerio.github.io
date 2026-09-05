@@ -324,9 +324,15 @@ section[id] { scroll-margin-top: 82px; }
   padding: 14px 0;
   font: 800 16px/1 var(--mono);
   text-transform: uppercase;
-  animation: ticker-move 26s linear infinite;
+  animation: ticker-move var(--marquee-duration, 26s) linear infinite;
+  will-change: transform;
 }
-.ticker-track span { padding-right: 38px; white-space: nowrap; }
+.ticker-track [data-marquee-item],
+.ticker-track [data-marquee-clone] {
+  flex: 0 0 auto;
+  padding-right: 38px;
+  white-space: nowrap;
+}
 
 .games { padding-block: clamp(80px, 10vw, 150px); }
 .section-head {
@@ -574,7 +580,7 @@ section[id] { scroll-margin-top: 82px; }
 }
 @keyframes brand-type { 45% { color: #d3381f; letter-spacing: .18em; } }
 @keyframes ring-turn { to { transform: rotate(360deg); } }
-@keyframes ticker-move { to { transform: translateX(-50%); } }
+@keyframes ticker-move { to { transform: translate3d(calc(-1 * var(--marquee-distance, 50%)), 0, 0); } }
 @keyframes contact-shape { to { border-radius: 28% 72% 66% 34%; transform: translate(28px, 24px) rotate(18deg); } }
 
 @media (max-width: 1040px) {
