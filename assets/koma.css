@@ -169,7 +169,7 @@ section[id] { scroll-margin-top: 82px; }
   letter-spacing: -.055em;
   text-transform: uppercase;
 }
-.hero-word { position: relative; max-width: 100%; padding: .04em .12em .11em; overflow-wrap: anywhere; }
+.hero-word { position: relative; max-width: 100%; padding: .04em .12em .11em; overflow-wrap: normal; white-space: nowrap; }
 .hero-word--ink { color: var(--paper); background: var(--ink); }
 .hero-word--lime { margin-top: .06em; background: var(--lime); border-radius: 60px 10px 60px 20px; transform: translateX(6%); }
 .hero-word--coral { margin-top: .06em; color: #fff; background: var(--coral); border-radius: 10px 60px 18px 60px; transform: translateX(-2%); }
