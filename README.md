@@ -1,3 +1,3 @@
-# KoMa Studio developer website
+# KoMa Studio game website
 
-Root GitHub Pages site used for developer information and `app-ads.txt`.
+Root GitHub Pages site for the studio's Android games, feedback flow, privacy documents and `app-ads.txt`.

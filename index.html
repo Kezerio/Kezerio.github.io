@@ -3,535 +3,189 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17132a">
+  <meta name="theme-color" content="#f8f0e7">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="КоМа Студия — мобильные игры для Android. Играйте в русские шашки и яркий кликер, скачивайте игры в RuStore.">
+  <meta name="description" content="КоМа Студия создаёт мобильные игры для Android. Русские шашки и Мелстрой Кликер доступны в RuStore.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="КоМа Студия — мобильные игры">
-  <meta property="og:description" content="Наши игры для Android: русские шашки и яркий кликер. Скачать бесплатно в RuStore.">
+  <meta property="og:title" content="КоМа Студия | Игры для Android">
+  <meta property="og:description" content="Два разных ритма игры: спокойная стратегия и динамичный кликер. Скачать бесплатно в RuStore.">
   <meta property="og:image" content="https://kezerio.github.io/og.png">
   <meta property="og:url" content="https://kezerio.github.io/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="КоМа Студия — мобильные игры">
-  <meta name="twitter:description" content="Наши игры для Android: русские шашки и яркий кликер. Скачать бесплатно в RuStore.">
+  <meta name="twitter:title" content="КоМа Студия | Игры для Android">
+  <meta name="twitter:description" content="Русские шашки и Мелстрой Кликер для Android.">
   <meta name="twitter:image" content="https://kezerio.github.io/og.png">
-  <title>КоМа Студия — мобильные игры</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --ink: #f8f4ff;
-      --muted: #bcb6cf;
-      --page: #100d1d;
-      --surface: #1b1730;
-      --line: rgba(255, 255, 255, 0.11);
-      --accent-strong: #ff6948;
-      --violet: #a785ff;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-width: 320px;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 10%, rgba(167, 133, 255, 0.18), transparent 30rem),
-        radial-gradient(circle at 92% 20%, rgba(255, 105, 72, 0.15), transparent 28rem),
-        var(--page);
-    }
-    a { color: inherit; }
-    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid var(--line);
-      background: rgba(16, 13, 29, 0.82);
-      backdrop-filter: blur(18px);
-    }
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 850;
-      letter-spacing: -0.02em;
-    }
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      color: #21152b;
-      background: linear-gradient(135deg, #ffc16a, var(--accent-strong));
-      box-shadow: 0 10px 26px rgba(255, 105, 72, 0.28);
-      font-size: 15px;
-      font-weight: 950;
-    }
-    .nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: 14px; font-weight: 700; }
-    .nav-links a { text-decoration: none; transition: color 160ms ease; }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
-    .hero {
-      padding: 104px 0 76px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      align-items: center;
-      gap: 64px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 0 18px;
-      color: #d9ccff;
-      font-size: 13px;
-      font-weight: 850;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before { content: ""; width: 26px; height: 2px; border-radius: 999px; background: var(--violet); }
-    h1 { max-width: 780px; margin: 0; font-size: clamp(48px, 7vw, 86px); line-height: 0.98; letter-spacing: -0.06em; }
-    .gradient-text {
-      color: transparent;
-      background: linear-gradient(100deg, #fff 0%, #d7c9ff 40%, #ff9a68 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-    .hero-copy { max-width: 680px; margin: 28px 0 0; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-    .button {
-      display: inline-flex;
-      min-height: 52px;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 0 22px;
-      border: 1px solid transparent;
-      border-radius: 16px;
-      font-size: 15px;
-      font-weight: 850;
-      font-family: inherit;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary {
-      color: #241428;
-      background: linear-gradient(135deg, #ffc369, var(--accent-strong));
-      box-shadow: 0 14px 36px rgba(255, 105, 72, 0.24);
-    }
-    .button-secondary { border-color: var(--line); background: rgba(255, 255, 255, 0.04); }
-    .hero-panel {
-      position: relative;
-      min-height: 410px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      background: linear-gradient(145deg, rgba(167, 133, 255, 0.14), rgba(255, 105, 72, 0.08)), var(--surface);
-      box-shadow: var(--shadow);
-    }
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      opacity: 0.18;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, #000, transparent);
-    }
-    .floating-icon {
-      position: absolute;
-      width: 148px;
-      aspect-ratio: 1;
-      overflow: hidden;
-      border: 5px solid rgba(255, 255, 255, 0.11);
-      border-radius: 34px;
-      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.38);
-      background: #292341;
-    }
-    .floating-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .floating-icon:first-of-type { top: 54px; left: 44px; transform: rotate(-7deg); }
-    .floating-icon:last-of-type { right: 42px; bottom: 54px; transform: rotate(8deg); }
-    .panel-label { position: absolute; left: 38px; bottom: 32px; max-width: 190px; margin: 0; color: var(--muted); font-size: 13px; font-weight: 750; line-height: 1.45; }
-    .games { padding: 68px 0 110px; }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
-    .section-heading h2 { margin: 0; font-size: clamp(34px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.045em; }
-    .section-heading p { max-width: 460px; margin: 0; color: var(--muted); line-height: 1.55; }
-    .game-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .game-card {
-      min-height: 390px;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 58%), var(--surface);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
-      transition: transform 180ms ease, border-color 180ms ease;
-    }
-    .game-card:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.2); }
-    .game-top { display: flex; align-items: flex-start; gap: 20px; }
-    .game-icon { width: 104px; aspect-ratio: 1; flex: 0 0 auto; border: 3px solid rgba(255, 255, 255, 0.12); border-radius: 25px; object-fit: cover; box-shadow: 0 16px 28px rgba(0, 0, 0, 0.27); }
-    .tag { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border: 1px solid rgba(167, 133, 255, 0.24); border-radius: 999px; color: #d8ccff; background: rgba(167, 133, 255, 0.09); font-size: 12px; font-weight: 850; }
-    .game-card h3 { margin: 12px 0 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.08; letter-spacing: -0.035em; }
-    .game-description { margin: 28px 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
-    .game-meta { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px; }
-    .game-meta span { padding: 8px 11px; border-radius: 10px; color: #d5cee2; background: rgba(255, 255, 255, 0.055); font-size: 12px; font-weight: 750; }
-    .card-link { display: inline-flex; align-items: center; gap: 10px; color: #ffb27e; font-weight: 850; text-decoration: none; }
-    .card-link::after { content: "→"; font-size: 20px; transition: transform 160ms ease; }
-    .card-link:hover::after { transform: translateX(4px); }
-    .contact { padding: 0 0 104px; }
-    .contact-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      padding: clamp(30px, 5vw, 56px);
-      border: 1px solid rgba(255, 159, 97, 0.25);
-      border-radius: 32px;
-      background: linear-gradient(120deg, rgba(255, 105, 72, 0.15), rgba(167, 133, 255, 0.13)), var(--surface);
-      box-shadow: var(--shadow);
-    }
-    .contact-card h2 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 46px); letter-spacing: -0.04em; }
-    .contact-card p { max-width: 610px; margin: 0; color: var(--muted); line-height: 1.55; }
-    footer { padding: 28px 0 36px; border-top: 1px solid var(--line); color: #918aa2; font-size: 13px; }
-    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .footer-links a { text-underline-offset: 4px; }
-    body.modal-open { overflow: hidden; }
-    .feedback-modal[hidden] { display: none; }
-    .feedback-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 180ms ease;
-    }
-    .feedback-modal.is-open { opacity: 1; }
-    .modal-backdrop { position: absolute; inset: 0; background: rgba(7, 5, 14, 0.78); backdrop-filter: blur(8px); }
-    .modal-dialog {
-      position: relative;
-      width: min(620px, 100%);
-      max-height: calc(100vh - 40px);
-      overflow-y: auto;
-      padding: clamp(24px, 5vw, 42px);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 30px;
-      background: linear-gradient(145deg, rgba(167, 133, 255, 0.12), rgba(255, 105, 72, 0.08)), #19152c;
-      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.56);
-      transform: translateY(14px) scale(0.98);
-      transition: transform 180ms ease;
-    }
-    .feedback-modal.is-open .modal-dialog { transform: translateY(0) scale(1); }
-    .modal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      padding: 0;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.05);
-      font: inherit;
-      font-size: 25px;
-      cursor: pointer;
-    }
-    .modal-dialog h2 { margin: 0 52px 10px 0; font-size: clamp(29px, 5vw, 40px); letter-spacing: -0.04em; }
-    .modal-intro { margin: 0 0 28px; color: var(--muted); line-height: 1.55; }
-    .feedback-form { display: grid; gap: 18px; }
-    .form-field { display: grid; gap: 8px; }
-    .form-field label { font-size: 14px; font-weight: 800; }
-    .form-field input, .form-field textarea {
-      width: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 15px;
-      color: var(--ink);
-      background: rgba(8, 6, 17, 0.48);
-      font: inherit;
-      font-size: 16px;
-      outline: none;
-      transition: border-color 160ms ease, box-shadow 160ms ease;
-    }
-    .form-field input { min-height: 52px; padding: 0 16px; }
-    .form-field textarea { min-height: 156px; padding: 14px 16px; line-height: 1.5; resize: vertical; }
-    .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(167, 133, 255, 0.16); }
-    .field-meta { display: flex; justify-content: flex-end; color: #958da8; font-size: 12px; }
-    .privacy-note { margin: -2px 0 0; color: #a9a1ba; font-size: 12px; line-height: 1.5; }
-    .privacy-note a { text-underline-offset: 3px; }
-    .consent-list { display: grid; gap: 12px; }
-    .consent-item { display: grid; grid-template-columns: 20px 1fr; align-items: start; gap: 10px; color: #c8c1d5; font-size: 13px; line-height: 1.5; cursor: pointer; }
-    .consent-item input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--accent-strong); }
-    .consent-item a { text-underline-offset: 3px; }
-    .form-actions { display: flex; align-items: center; gap: 16px; }
-    .form-status { flex: 1; min-height: 22px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
-    .form-status.is-success { color: #aee9bf; }
-    .form-status.is-error { color: #ffb2a2; }
-    .feedback-form .button:disabled { cursor: wait; opacity: 0.65; transform: none; }
-    .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
-    :focus-visible { outline: 3px solid rgba(255, 176, 112, 0.8); outline-offset: 4px; }
-
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; padding-top: 72px; }
-      .hero-panel { min-height: 360px; }
-      .section-heading { align-items: flex-start; flex-direction: column; }
-      .game-grid { grid-template-columns: 1fr; }
-      .contact-card { align-items: flex-start; flex-direction: column; }
-    }
-    @media (max-width: 620px) {
-      .shell { width: min(100% - 28px, 1120px); }
-      .nav { min-height: 66px; }
-      .nav-links a:first-child { display: none; }
-      .nav-links { gap: 16px; }
-      .hero { gap: 38px; padding: 58px 0 48px; }
-      h1 { font-size: clamp(44px, 15vw, 64px); }
-      .hero-copy { font-size: 17px; }
-      .hero-actions, .hero-actions .button { width: 100%; }
-      .hero-panel { min-height: 300px; border-radius: 26px; }
-      .floating-icon { width: 118px; border-radius: 26px; }
-      .floating-icon:first-of-type { top: 35px; left: 28px; }
-      .floating-icon:last-of-type { right: 26px; bottom: 36px; }
-      .panel-label { left: 26px; bottom: 24px; max-width: 150px; font-size: 11px; }
-      .games { padding: 46px 0 76px; }
-      .game-card { min-height: 0; padding: 22px; border-radius: 24px; }
-      .game-icon { width: 82px; border-radius: 20px; }
-      .game-card h3 { font-size: 25px; }
-      .contact { padding-bottom: 76px; }
-      .contact-card { border-radius: 24px; }
-      .contact-card .button { width: 100%; }
-      .feedback-modal { padding: 10px; align-items: end; }
-      .modal-dialog { max-height: calc(100vh - 20px); padding: 26px 20px 22px; border-radius: 24px; }
-      .modal-close { top: 14px; right: 14px; }
-      .form-actions { align-items: stretch; flex-direction: column-reverse; }
-      .feedback-form .button { width: 100%; }
-      .footer-row { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+  <title>КоМа Студия | Игры для Android</title>
+  <link rel="stylesheet" href="assets/koma.css?v=20260905-play-pulse">
+  <script src="assets/koma.js?v=20260905-play-pulse" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#content" data-i18n="skip">К содержанию</a>
+
   <header class="site-header">
     <div class="shell nav">
-      <a class="brand" href="#top" aria-label="КоМа Студия — на главную"><span class="brand-mark" aria-hidden="true">КМ</span><span>КоМа Студия</span></a>
-      <nav class="nav-links" aria-label="Основная навигация"><a href="#games">Наши игры</a><a class="js-open-feedback" href="#feedback-modal">Обратная связь</a></nav>
+      <a class="brand" href="#top" data-brand aria-label="Запустить игровой импульс и вернуться наверх" data-i18n-aria="brandLabel">
+        <span class="brand-mark" aria-hidden="true">K:\</span>
+        <span class="brand-copy"><strong>KOMA / PLAYLAB</strong><small>ANDROID GAME STUDIO</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Основная навигация" data-i18n-aria="navLabel">
+        <a href="#games" data-i18n="navGames">Игры</a>
+        <a href="#contact" data-i18n="navContact">Обратная связь</a>
+        <a href="https://kezerio.github.io/kezerio-qa-portfolio/" data-portfolio-link data-i18n="navPortfolio">Портфолио</a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Выбор языка" data-i18n-aria="languageLabel">
+        <button class="is-active" type="button" data-language="ru" aria-pressed="true">RU</button>
+        <button type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="shell hero" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">Мобильные игры для Android</p>
-        <h1 id="hero-title"><span class="gradient-text">Играем.</span><br>Создаём. Радуем.</h1>
-        <p class="hero-copy">КоМа Студия создаёт понятные и увлекательные игры, в которые легко начать играть и приятно возвращаться.</p>
+  <main id="content">
+    <section class="shell hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-i18n="heroEyebrow">ANDROID / ДВА РИТМА / ОДНА СТУДИЯ</p>
+        <h1 id="hero-title">
+          <span class="hero-word hero-word--ink" data-i18n="heroWordOne">ВКЛЮЧАЙ</span>
+          <span class="hero-word hero-word--lime" data-i18n="heroWordTwo">ЛОГИКУ.</span>
+          <span class="hero-word hero-word--coral" data-i18n="heroWordThree">ИЛИ АЗАРТ.</span>
+        </h1>
+        <p class="hero-intro" data-i18n="heroIntro">КоМа Студия делает мобильные игры, в которые легко войти. Выберите спокойную партию или быстрый прогресс.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#games">Смотреть игры</a>
-          <button class="button button-secondary js-open-feedback" type="button">Написать нам</button>
+          <a class="button button--ink" href="https://www.rustore.ru/catalog/app/com.koma.russiancheckers" target="_blank" rel="noopener noreferrer" data-active-store-link><span data-i18n="heroOpen">Открыть выбранную игру</span><span aria-hidden="true">↗</span></a>
+          <a class="button button--soft" href="#games"><span data-i18n="heroAll">Все игры</span><span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <div class="hero-panel" aria-label="Игры КоМа Студии">
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="floating-icon"><img src="https://static.rustore.ru/imgproxy/S_-r8M7lbxUd-ukBQhzLB4ZWll-Zy1n79whHn_9-prg/preset:vk_og_img/plain/https://static.rustore.ru/2026/8/10/66/apk/2063745241/content/ICON/3715ad90-2285-4666-ab97-f5ab9533d7c9.png@webp" referrerpolicy="no-referrer" alt="Иконка игры Русские шашки"></div>
-        <div class="floating-icon"><img src="https://static.rustore.ru/imgproxy/599ypp7QAMEqnysWEGfSeEv78ctYdh4lO70l325EHQc/preset:vk_og_img/plain/https://static.rustore.ru/2026/3/27/b9/apk/2063703643/content/ICON/18bff51e-37ce-4ab2-9416-0dfbde1bba7f.png@webp" referrerpolicy="no-referrer" alt="Иконка игры Мелстрой Кликер"></div>
-        <p class="panel-label">Две игры уже доступны бесплатно в RuStore</p>
+
+      <div class="game-console reveal" data-console>
+        <div class="console-bar">
+          <p class="console-kicker" data-i18n="selectorLabel">ВЫБОР РЕЖИМА / 01</p>
+          <span class="console-counter" data-stage-counter>01 / 02</span>
+        </div>
+        <div class="game-tabs" role="tablist" aria-label="Выберите игру" data-i18n-aria="selectorAria">
+          <button class="game-tab is-active" id="tab-checkers" type="button" role="tab" aria-selected="true" aria-controls="game-stage" tabindex="0" data-game="checkers">
+            <span>01</span><strong data-i18n="tabCheckers">ДУМАТЬ / ШАШКИ</strong>
+          </button>
+          <button class="game-tab" id="tab-clicker" type="button" role="tab" aria-selected="false" aria-controls="game-stage" tabindex="-1" data-game="clicker">
+            <span>02</span><strong data-i18n="tabClicker">ТАПАТЬ / КЛИКЕР</strong>
+          </button>
+        </div>
+        <div class="game-stage" id="game-stage" role="tabpanel" aria-live="polite" aria-labelledby="tab-checkers" data-game-stage data-tone="lime">
+          <div class="stage-art" aria-hidden="true">
+            <div class="stage-cross"></div>
+            <div class="stage-ring"></div>
+            <img class="stage-icon" src="https://static.rustore.ru/imgproxy/S_-r8M7lbxUd-ukBQhzLB4ZWll-Zy1n79whHn_9-prg/preset:vk_og_img/plain/https://static.rustore.ru/2026/8/10/66/apk/2063745241/content/ICON/3715ad90-2285-4666-ab97-f5ab9533d7c9.png@webp" referrerpolicy="no-referrer" alt="" data-stage-icon>
+            <span class="stage-sticker" data-stage-sticker>THINK FIRST</span>
+          </div>
+          <div class="stage-copy">
+            <div class="stage-meta"><span class="stage-tag" data-stage-tag>СТРАТЕГИЯ · 0+</span><span class="stage-platform">ANDROID / RUSTORE</span></div>
+            <h2 data-stage-title>Русские шашки</h2>
+            <p class="stage-description" data-stage-description>Классическая партия с другом или против компьютера. Простые правила и пространство для тактики.</p>
+            <a class="button stage-link" href="https://www.rustore.ru/catalog/app/com.koma.russiancheckers" target="_blank" rel="noopener noreferrer" data-stage-link><span data-stage-link-label>Открыть в RuStore</span><span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>THINK ✦ TAP ✦ PLAY ✦ RETRY ✦ ANDROID ✦ KOMA PLAYLAB ✦ </span>
+        <span>THINK ✦ TAP ✦ PLAY ✦ RETRY ✦ ANDROID ✦ KOMA PLAYLAB ✦ </span>
+      </div>
+    </div>
+
     <section class="shell games" id="games" aria-labelledby="games-title">
-      <div class="section-heading"><h2 id="games-title">Наши игры</h2><p>Выбирайте спокойную стратегию или яркий кликер — обе игры доступны для Android в RuStore.</p></div>
-      <div class="game-grid">
-        <article class="game-card">
-          <div class="game-top">
-            <img class="game-icon" src="https://static.rustore.ru/imgproxy/S_-r8M7lbxUd-ukBQhzLB4ZWll-Zy1n79whHn_9-prg/preset:vk_og_img/plain/https://static.rustore.ru/2026/8/10/66/apk/2063745241/content/ICON/3715ad90-2285-4666-ab97-f5ab9533d7c9.png@webp" referrerpolicy="no-referrer" alt="Иконка Русских шашек">
-            <div><span class="tag">Стратегия · 0+</span><h3>Русские шашки</h3></div>
+      <div class="section-head reveal">
+        <div><p class="section-code" data-i18n="gamesCode">ИГРЫ / 02</p><h2 id="games-title" data-i18n-html="gamesTitle">Выберите<br><i>свой темп.</i></h2></div>
+        <p data-i18n="gamesIntro">Две игры с разным характером. Обе доступны для Android в RuStore.</p>
+      </div>
+
+      <div class="game-list">
+        <article class="game-card reveal" data-tone="lilac">
+          <span class="game-index">01 / CALM</span>
+          <div class="game-visual" data-tilt-card>
+            <img src="https://static.rustore.ru/imgproxy/S_-r8M7lbxUd-ukBQhzLB4ZWll-Zy1n79whHn_9-prg/preset:vk_og_img/plain/https://static.rustore.ru/2026/8/10/66/apk/2063745241/content/ICON/3715ad90-2285-4666-ab97-f5ab9533d7c9.png@webp" referrerpolicy="no-referrer" alt="Иконка игры Русские шашки" data-i18n-alt="checkersAlt">
           </div>
-          <p class="game-description">Классические русские шашки для партии с другом или игры против компьютера. Простые правила, удобное управление и тактические решения.</p>
-          <div class="game-meta" aria-label="Особенности игры"><span>Для двоих</span><span>Игра с ИИ</span><span>Классические правила</span></div>
-          <a class="card-link" href="https://www.rustore.ru/catalog/app/com.koma.russiancheckers" target="_blank" rel="noopener noreferrer">Открыть в RuStore</a>
+          <div class="game-content">
+            <span class="tag" data-i18n="checkersTag">Стратегия · 0+</span>
+            <h3 data-i18n="checkersTitle">Русские шашки</h3>
+            <p class="game-description" data-i18n="checkersDescription">Классические русские шашки для партии с другом или игры против компьютера. Удобное управление и тактические решения.</p>
+            <div class="game-meta" aria-label="Особенности игры" data-i18n-aria="featuresLabel"><span data-i18n="checkersFeatureOne">Для двоих</span><span data-i18n="checkersFeatureTwo">Игра с ИИ</span><span data-i18n="checkersFeatureThree">Классические правила</span></div>
+          </div>
+          <a class="game-open" href="https://www.rustore.ru/catalog/app/com.koma.russiancheckers" target="_blank" rel="noopener noreferrer" aria-label="Открыть Русские шашки в RuStore" data-i18n-aria="checkersOpen" data-magnetic>↗</a>
         </article>
 
-        <article class="game-card">
-          <div class="game-top">
-            <img class="game-icon" src="https://static.rustore.ru/imgproxy/599ypp7QAMEqnysWEGfSeEv78ctYdh4lO70l325EHQc/preset:vk_og_img/plain/https://static.rustore.ru/2026/3/27/b9/apk/2063703643/content/ICON/18bff51e-37ce-4ab2-9416-0dfbde1bba7f.png@webp" referrerpolicy="no-referrer" alt="Иконка Мелстрой Кликер">
-            <div><span class="tag">Казуальная · 18+</span><h3>Мелстрой Кликер</h3></div>
+        <article class="game-card reveal" data-tone="coral">
+          <span class="game-index">02 / FAST</span>
+          <div class="game-visual" data-tilt-card>
+            <img src="https://static.rustore.ru/imgproxy/599ypp7QAMEqnysWEGfSeEv78ctYdh4lO70l325EHQc/preset:vk_og_img/plain/https://static.rustore.ru/2026/3/27/b9/apk/2063703643/content/ICON/18bff51e-37ce-4ab2-9416-0dfbde1bba7f.png@webp" referrerpolicy="no-referrer" alt="Иконка игры Мелстрой Кликер" data-i18n-alt="clickerAlt">
           </div>
-          <p class="game-description">Динамичный кликер с уровнями, наградами, коллекциями и постоянным прогрессом. Каждый тап помогает двигаться дальше и открывать новое.</p>
-          <div class="game-meta" aria-label="Особенности игры"><span>Уровни</span><span>Награды</span><span>Коллекции</span></div>
-          <a class="card-link" href="https://www.rustore.ru/catalog/app/com.mellstroy.clicker" target="_blank" rel="noopener noreferrer">Открыть в RuStore</a>
+          <div class="game-content">
+            <span class="tag" data-i18n="clickerTag">Казуальная · 18+</span>
+            <h3 data-i18n="clickerTitle">Мелстрой Кликер</h3>
+            <p class="game-description" data-i18n="clickerDescription">Динамичный кликер с уровнями, наградами, коллекциями и постоянным прогрессом. Каждый тап открывает следующий шаг.</p>
+            <div class="game-meta" aria-label="Особенности игры" data-i18n-aria="featuresLabel"><span data-i18n="clickerFeatureOne">Уровни</span><span data-i18n="clickerFeatureTwo">Награды</span><span data-i18n="clickerFeatureThree">Коллекции</span></div>
+          </div>
+          <a class="game-open" href="https://www.rustore.ru/catalog/app/com.mellstroy.clicker" target="_blank" rel="noopener noreferrer" aria-label="Открыть Мелстрой Кликер в RuStore" data-i18n-aria="clickerOpen" data-magnetic>↗</a>
         </article>
       </div>
     </section>
 
     <section class="shell contact" id="contact" aria-labelledby="contact-title">
-      <div class="contact-card">
-        <div><h2 id="contact-title">Есть вопрос или идея?</h2><p>Напишите нам о проблеме, предложите улучшение или поделитесь впечатлениями. Мы читаем сообщения игроков и используем их, чтобы делать игры лучше.</p></div>
-        <button class="button button-primary js-open-feedback" type="button">Обратная связь</button>
+      <div class="contact-card reveal">
+        <div class="contact-copy">
+          <p class="contact-code" data-i18n="contactCode">СВЯЗЬ / 03</p>
+          <h2 id="contact-title" data-i18n-html="contactTitle">Есть идея?<br>Давайте <i>услышим.</i></h2>
+          <p data-i18n="contactText">Сообщите об ошибке, предложите улучшение или поделитесь впечатлением от игры.</p>
+        </div>
+        <div class="contact-actions">
+          <button class="button button--light" type="button" data-feedback-open><span data-i18n="feedbackOpen">Обратная связь</span><span aria-hidden="true">↗</span></button>
+          <a class="button button--ghost" href="https://kezerio.github.io/kezerio-qa-portfolio/" data-portfolio-link><span data-i18n="portfolioOpen">QA портфолио</span><span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="shell footer-row"><span>© 2026 КоМа Студия. Мобильные игры для Android.</span><div class="footer-links"><a href="/site-privacy/">Политика сайта</a><a href="/russian-checkers-privacy/">Политика игры «Шашки»</a><a href="/app-ads.txt">app-ads.txt</a></div></div>
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div class="footer-brand"><strong>KOMA / PLAYLAB</strong><span data-i18n="footerText">© 2026 КоМа Студия. Игры для Android.</span></div>
+      <div class="footer-links">
+        <a href="site-privacy/" data-site-privacy-link data-i18n="privacyLink">Политика сайта</a>
+        <a href="russian-checkers-privacy/" data-i18n="checkersPrivacyLink">Политика игры «Шашки»</a>
+        <a href="app-ads.txt">app-ads.txt</a>
+      </div>
+    </div>
   </footer>
 
-  <div class="feedback-modal" id="feedback-modal" hidden>
-    <div class="modal-backdrop" data-close-feedback aria-hidden="true"></div>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="feedback-title" aria-describedby="feedback-description">
-      <button class="modal-close" type="button" data-close-feedback aria-label="Закрыть форму">×</button>
-      <h2 id="feedback-title">Обратная связь</h2>
-      <p class="modal-intro" id="feedback-description">Расскажите о проблеме, идее или впечатлениях от наших игр.</p>
-      <form class="feedback-form" id="feedback-form" novalidate>
-        <div class="form-field">
-          <label for="feedback-name">Ваше имя</label>
-          <input id="feedback-name" name="name" type="text" maxlength="30" autocomplete="name" placeholder="Как к вам обращаться" required>
-        </div>
-        <div class="form-field">
-          <label for="feedback-email">Электронная почта</label>
-          <input id="feedback-email" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
-        </div>
-        <div class="form-field">
-          <label for="feedback-message">Сообщение</label>
-          <textarea id="feedback-message" name="message" maxlength="3000" placeholder="Введите текст сообщения" required></textarea>
-          <div class="field-meta"><span id="feedback-count">0 / 3000</span></div>
-        </div>
-        <div class="honeypot" aria-hidden="true"><label for="feedback-company">Компания</label><input id="feedback-company" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
-        <p class="privacy-note">Не указывайте в сообщении паспортные, платёжные, медицинские и иные чувствительные сведения. Для доставки обращения используются FormSubmit и электронная почта.</p>
-        <div class="consent-list">
-          <label class="consent-item"><input id="feedback-consent" name="consent" type="checkbox" required><span>Я отдельно даю <a href="/personal-data-consent/" target="_blank" rel="noopener noreferrer">согласие на обработку персональных данных</a> и ознакомлен(а) с <a href="/site-privacy/" target="_blank" rel="noopener noreferrer">Политикой сайта</a>.</span></label>
-          <label class="consent-item"><input id="feedback-age" name="age_confirmation" type="checkbox" required><span>Мне исполнилось 18 лет либо обращение отправляет мой законный представитель.</span></label>
-        </div>
-        <div class="form-actions">
-          <p class="form-status" id="feedback-status" role="status" aria-live="polite"></p>
-          <button class="button button-primary" id="feedback-submit" type="submit">Отправить</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <button class="back-to-top" type="button" data-back-to-top aria-label="Наверх"><span aria-hidden="true">↑</span></button>
+  <div class="sr-only" role="status" aria-live="polite" data-brand-status></div>
 
-  <script>
-    (() => {
-      const modal = document.getElementById('feedback-modal');
-      const dialog = modal.querySelector('.modal-dialog');
-      const form = document.getElementById('feedback-form');
-      const nameField = document.getElementById('feedback-name');
-      const messageField = document.getElementById('feedback-message');
-      const honeyField = document.getElementById('feedback-company');
-      const consentField = document.getElementById('feedback-consent');
-      const ageField = document.getElementById('feedback-age');
-      const count = document.getElementById('feedback-count');
-      const status = document.getElementById('feedback-status');
-      const submit = document.getElementById('feedback-submit');
-      let lastFocused = null;
-
-      const setStatus = (text, type = '') => {
-        status.textContent = text;
-        status.className = `form-status${type ? ` is-${type}` : ''}`;
-      };
-
-      const updateCount = () => { count.textContent = `${messageField.value.length} / 3000`; };
-
-      const openModal = () => {
-        lastFocused = document.activeElement;
-        modal.hidden = false;
-        document.body.classList.add('modal-open');
-        requestAnimationFrame(() => {
-          modal.classList.add('is-open');
-          nameField.focus();
-        });
-      };
-
-      const closeModal = () => {
-        modal.classList.remove('is-open');
-        document.body.classList.remove('modal-open');
-        window.setTimeout(() => { modal.hidden = true; }, 180);
-        if (lastFocused) lastFocused.focus();
-      };
-
-      document.querySelectorAll('.js-open-feedback').forEach((button) => button.addEventListener('click', (event) => {
-        event.preventDefault();
-        openModal();
-      }));
-      modal.querySelectorAll('[data-close-feedback]').forEach((button) => button.addEventListener('click', closeModal));
-      messageField.addEventListener('input', updateCount);
-
-      document.addEventListener('keydown', (event) => {
-        if (modal.hidden) return;
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          closeModal();
-          return;
-        }
-        if (event.key !== 'Tab') return;
-        const focusable = [...dialog.querySelectorAll('button:not([disabled]), input:not([tabindex="-1"]), textarea, a[href]')];
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-      });
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        setStatus('');
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-        if (honeyField.value) return;
-
-        submit.disabled = true;
-        submit.textContent = 'Отправляем…';
-        setStatus('Отправляем сообщение…');
-
-        const formData = new FormData(form);
-        const email = String(formData.get('email')).trim();
-        const payload = {
-          name: String(formData.get('name')).trim(),
-          email,
-          message: String(formData.get('message')).trim(),
-          consent_to_personal_data_processing: consentField.checked ? 'Да' : 'Нет',
-          age_confirmation: ageField.checked ? 'Да' : 'Нет',
-          submitted_from: 'https://kezerio.github.io/',
-          submitted_at: new Date().toISOString(),
-          _replyto: email,
-          _subject: 'Обратная связь — КоМа Студия',
-          _template: 'table'
-        };
-
-        try {
-          const response = await fetch('https://formsubmit.co/ajax/aniyurotaxo084@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          if (!response.ok) throw new Error('Request failed');
-          form.reset();
-          updateCount();
-          setStatus('Сообщение отправлено. Спасибо!', 'success');
-        } catch (error) {
-          setStatus('Не удалось отправить. Проверьте интернет и попробуйте ещё раз.', 'error');
-        } finally {
-          submit.disabled = false;
-          submit.textContent = 'Отправить';
-        }
-      });
-    })();
-  </script>
+  <dialog class="feedback-dialog" data-feedback-dialog aria-labelledby="feedback-title">
+    <form class="feedback-form" id="feedback-form" action="https://formsubmit.co/aniyurotaxo084@gmail.com" method="POST" target="_blank" rel="noopener noreferrer">
+      <input type="hidden" name="_subject" value="KoMa Studio feedback">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="submitted_from" value="https://kezerio.github.io/">
+      <header class="feedback-header">
+        <div><p data-i18n="feedbackCode">ОБРАТНАЯ СВЯЗЬ / БЕЗ РЕГИСТРАЦИИ</p><h2 id="feedback-title" data-i18n-html="feedbackTitle">Расскажите<br><i>по делу.</i></h2></div>
+        <button class="dialog-close" type="button" data-feedback-close aria-label="Закрыть форму" data-i18n-aria="feedbackClose">×</button>
+      </header>
+      <p class="dialog-intro" data-i18n="feedbackIntro">Можно сообщить об ошибке, предложить улучшение или поделиться впечатлением. Поля с * обязательны.</p>
+      <div class="feedback-grid">
+        <label class="field"><span><b data-i18n="feedbackName">Имя *</b><output data-name-count>0 / 30</output></span><input type="text" name="name" maxlength="30" autocomplete="name" required placeholder="До 30 символов" data-i18n-placeholder="feedbackNamePlaceholder"></label>
+        <label class="field"><span><b data-i18n="feedbackEmail">Email для ответа *</b></span><input type="email" name="email" maxlength="254" autocomplete="email" required placeholder="name@example.com"></label>
+        <label class="field field--message"><span><b data-i18n="feedbackMessage">Сообщение *</b><output data-message-count>0 / 3000</output></span><textarea name="message" maxlength="3000" required placeholder="Что вы заметили?" data-i18n-placeholder="feedbackMessagePlaceholder"></textarea></label>
+      </div>
+      <label class="honeypot" aria-hidden="true"><span>Company</span><input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+      <p class="privacy-note" data-i18n="feedbackWarning">Не отправляйте паспортные, платёжные, медицинские и другие чувствительные сведения.</p>
+      <div class="consent-list">
+        <div class="consent-item"><input id="feedback-consent" type="checkbox" name="consent" required><div><label for="feedback-consent" data-i18n="feedbackConsent">Я даю согласие на обработку введённых данных и ознакомлен с политикой сайта.</label> <a href="personal-data-consent/" target="_blank" rel="noopener noreferrer" data-consent-page-link data-i18n="consentLink">Согласие ↗</a> <a href="site-privacy/" target="_blank" rel="noopener noreferrer" data-site-privacy-link data-i18n="privacyShortLink">Политика ↗</a></div></div>
+        <label class="consent-item"><input type="checkbox" name="age_confirmation" required><span data-i18n="feedbackAge">Мне исполнилось 18 лет либо сообщение отправляет мой законный представитель.</span></label>
+      </div>
+      <div class="form-actions">
+        <button class="button button--ink" type="submit" data-feedback-submit data-i18n="feedbackSubmit">Отправить</button>
+        <p class="form-status" role="status" aria-live="polite" data-feedback-status></p>
+      </div>
+    </form>
+  </dialog>
 </body>
 </html>
